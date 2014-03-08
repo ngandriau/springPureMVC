@@ -1,0 +1,41 @@
+apply plugin: "groovy"
+apply plugin: "java"
+apply plugin: "war"
+apply plugin: 'project-report'
+apply plugin: 'idea'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    
+    compile 'org.codehaus.groovy:groovy-all:2.2.2'
+    compile 'org.springframework:spring-webmvc:4.0.2.RELEASE'
+    
+    compile "org.slf4j:slf4j-log4j12:1.7.1"
+
+    runtime 'javax.servlet:jstl:1.2'
+    
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+    
+    // optional dependencies for using Spock
+    testRuntime 'cglib:cglib-nodep:2.2.2'       // enables mocking of classes (in addition to interfaces)
+    testRuntime 'org.objenesis:objenesis:1.3'   // enables mocking of without default constructor (together with CGLIB)
+}
+
+// cf http://www.gradle.org/docs/current/userguide/gradle_wrapper.html
+task wrapper(type: Wrapper) {
+    gradleVersion "1.10"
+}
+
+// this is configuration for the output generated during test execution.
+// cf http://forums.gradle.org/gradle/topics/whats_new_in_gradle_1_1_test_logging
+// !!!It has been introduced in gradle 1.1, so update your gradle version if it fails
+tasks.withType(Test) {
+    testLogging {
+        events "passed", "failed", "skipped", "standardOut", "standardError"
+        showExceptions true
+    }
+}
+
