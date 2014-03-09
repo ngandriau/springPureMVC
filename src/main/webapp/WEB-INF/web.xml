@@ -5,18 +5,27 @@
 
     <module-name>spring-pure-webmvc</module-name>
 
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <!-- Spring Context XML files-->
-    <!--<context-param>-->
-        <!--<param-name>contextConfigLocation</param-name>-->
-        <!--<param-value>-->
-            <!--&lt;!&ndash;classpath:springApplicationContext.xml&ndash;&gt;-->
-            <!--&lt;!&ndash;classpath:service-context.xml&ndash;&gt;-->
-        <!--</param-value>-->
-    <!--</context-param>-->
-    <!-- Spring listener which will use the files located with the "contextConfigLocation" context param-->
-    <!--<listener>-->
-        <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
-    <!--</listener>-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/springPureMvc-security.xml
+            <!--classpath:service-context.xml-->
+        </param-value>
+    </context-param>
+     <!--Spring listener which will use the files located with the "contextConfigLocation" context param-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
 
 
