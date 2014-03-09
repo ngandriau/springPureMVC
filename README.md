@@ -8,3 +8,6 @@ No security, no transaction, just 1 controller, 1 view jsp and 1 url: http://<ho
 Use gradle to build, but not integrated with tomcat or jetty yet
 
 developped with intellij idea with pleasure ;-)
+
+The branches of this project will add other spring components
+Inside a branch, tags will help to review the milestones, like new feature or new version integrated
