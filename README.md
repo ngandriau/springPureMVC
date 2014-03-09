@@ -11,3 +11,5 @@ developped with intellij idea with pleasure ;-)
 
 The branches of this project will add other spring components
 Inside a branch, tags will help to review the milestones, like new feature or new version integrated
+
+add-security branch, integrate spring security in a simple way
