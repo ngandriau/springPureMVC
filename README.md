@@ -17,3 +17,5 @@ Inside a branch, tags will help to review the milestones, like new feature or ne
 #REST branch add some rest resource controller as the "PersonRestResource"
 
     http://<host>:<port>/<context>/rest/persons/id_1
+
+OAUTH2-REST branch securize the REST resource with the OAUTH2 support by spring.
