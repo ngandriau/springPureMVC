@@ -11,3 +11,6 @@ developped with intellij idea with pleasure ;-)
 
 The branches of this project will add other spring components
 Inside a branch, tags will help to review the milestones, like new feature or new version integrated
+
+#REST branches
+This branch explore the support of REST resources with spring
