@@ -7,9 +7,10 @@
              xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
         http://www.springframework.org/schema/security
-        http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+        http://www.springframework.org/schema/security/spring-security-3.2.xsd
+        http://www.springframework.org/schema/security/oauth2
+     	http://www.springframework.org/schema/security/spring-security-oauth2-1.0.xsd">
 
-    <!--Spring oauth2 config - !!!Experimental :-) -->
     <oauth:authorization-server client-details-service-ref="clientDetails" token-services-ref="tokenServices">
         <oauth:client-credentials />
     </oauth:authorization-server>
@@ -22,6 +23,7 @@
           authentication-manager-ref="clientAuthenticationManager"
           xmlns="http://www.springframework.org/schema/security">
         <intercept-url pattern="/oauth/token" access="IS_AUTHENTICATED_FULLY" />
+        <!-- for PRODUCTION requires-channel="https" -->
         <anonymous enabled="false" />
         <http-basic entry-point-ref="clientAuthenticationEntryPoint" />
 
@@ -33,9 +35,12 @@
     <oauth:resource-server id="resourceServerFilter"
                            resource-id="rest_server" token-services-ref="tokenServices" />
 
+    <!-- This client can -->
     <oauth:client-details-service id="clientDetails">
-        <oauth:client client-id="the_client" authorized-grant-types="client_credentials"
-                      authorities="ROLE_RESTREAD" secret="1234567890" />
+        <oauth:client client-id="the_client"
+                      authorized-grant-types="client_credentials"
+                      authorities="ROLE_RESTREAD"
+                      secret="1234567890" />
     </oauth:client-details-service>
 
 
